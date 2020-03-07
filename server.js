@@ -1,6 +1,6 @@
 // Dependencies
-let express = require("express");
-let path = require("path");
+const express = require("express");
+const path = require("path");
 
 // Sets up the Express app
 const app = express();
@@ -11,7 +11,25 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Reserved tables data
-let reservations = [];
+const reservations = [];
 
 // Waitlist data
-let waitListed = [];
+const waitListed = [];
+
+// Routes
+//===========================================================================
+
+// Basic route to the home page
+app.get("/", function(req, res) {
+    res.sendFile(path.join(__dirname, "index.html"));
+});
+
+// Route to go to add reservation page
+app.get("/add", function(req,res) {
+    res.sendFile(path.join(__dirname, "reserve.html"));
+});
+
+// Route to go to booked reservations
+app.get("/booked", function(req, res) {
+    res.sendFile(path.join(__dirname, "booked.html"));
+});
