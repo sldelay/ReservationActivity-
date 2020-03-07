@@ -25,7 +25,7 @@ app.get("/", function(req, res) {
 });
 
 // Route to go to add reservation page
-app.get("/add", function(req,res) {
+app.get("/reserve", function(req,res) {
     res.sendFile(path.join(__dirname, "views" ,"reserve.html"));
 });
 
