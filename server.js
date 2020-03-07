@@ -10,14 +10,12 @@ const PORT = 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Reserved tables data
+// Object containing reservations and waitlist entries
 const customers = {
     reservations = [],
     waitlisted = [],
 }
 
-// Waitlist data
-//const waitListed = [];
 
 // Routes
 //===========================================================================
@@ -41,7 +39,7 @@ app.get("/booked", function(req, res) {
 app.post("/api/reservations", function(req, res) {
     let newReservation = req.body;
     console.log(newReservation);
-    if (reservations.length < 5) {
+    if (customers.reservations.length < 5) {
         customers.reservations.push(newReservation);
     } else {
         customers.waitListed.push(newReservation);
