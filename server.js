@@ -47,6 +47,13 @@ app.post("/api/reservations", function(req, res) {
     res.json(newReservation);
 });
 
+// Creating the clear table functionality
+app.get("/api/clear", function(req, res) {
+    customers.reservations.length = 0;
+    customers.waitList.length = 0;
+    res.json(data);
+});
+
 // Starts the server to begin listening
 // =============================================================
 app.listen(PORT, function() {
