@@ -71,7 +71,7 @@
     <footer class="footer">
       <div class="container">
         <p>
-          <a href="/api/reservations">API Table Link</a> |
+          <a href="/api/customers">API Customers</a> |
           <a href="/api/waitListed">API Wait List</a>
       </div>
     </footer>
@@ -82,14 +82,14 @@
   $(".submit").on("click", function(event) {
     event.preventDefault()
 
-    let userInput = {
+    let newReservation = {
       name: $("#reserve-name").val().trim(),
       phone: $("#reserve-phone").val().trim(),
       email: $("#reserve-email").val().trim(),
       id: $("#reserve-unique-id").val().trim()
     }
 
-    $.post("/api/reservations", userInput)
+    $.post("/api/reservations", newReservation)
         .then(function(data) {
           console.log("booked.html", data);
           alert("Adding reservation...");
