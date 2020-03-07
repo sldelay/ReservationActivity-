@@ -44,6 +44,7 @@ app.post("/api/reservations", function(req, res) {
         waitListed.push(newReservation);
     };
     res.json(newReservation);
+    console.log(reservations)
 });
 
 // Starts the server to begin listening
