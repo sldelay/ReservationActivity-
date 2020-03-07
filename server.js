@@ -33,3 +33,10 @@ app.get("/add", function(req,res) {
 app.get("/booked", function(req, res) {
     res.sendFile(path.join(__dirname, "booked.html"));
 });
+
+
+// Starts the server to begin listening
+// =============================================================
+app.listen(PORT, function() {
+    console.log("App listening on PORT " + PORT);
+  });  
