@@ -34,6 +34,17 @@ app.get("/booked", function(req, res) {
     res.sendFile(path.join(__dirname, "views", "booked.html"));
 });
 
+// Create a new reservation
+app.post("/api/reservations", function(req, res) {
+    let newReservation = req.body;
+    console.log(newReservation);
+    if (reservations.length < 5) {
+        reservations.push(newReservation);
+    } else {
+        waitListed.push(newReservation);
+    };
+    res.json(newReservation);
+});
 
 // Starts the server to begin listening
 // =============================================================
