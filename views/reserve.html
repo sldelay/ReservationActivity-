@@ -24,7 +24,7 @@
       <h2 class="text-center">Make your reservation</h2>
       <br>
       <div class="text-center">
-        <a href="/views/reserve.html">
+        <a href="/booked">
           <button class="btn btn-lg btn-primary">
             <span class="fa fa-list-alt"></span> View Tables</button>
         </a>
@@ -71,15 +71,31 @@
     <footer class="footer">
       <div class="container">
         <p>
-          <a href="/api/tables">API Table Link</a> |
-          <a href="/api/waitlist">API Wait List</a>
+          <a href="/api/reservations">API Table Link</a> |
+          <a href="/api/waitListed">API Wait List</a>
       </div>
     </footer>
 
   </div>
 
   <script type="text/javascript">
-   
+  $(".submit").on("click", function(event) {
+    event.preventDefault()
+
+    let userInput = {
+      name: $("#reserve-name").val().trim(),
+      phone: $("#reserve-phone").val().trim(),
+      email: $("#reserve-email").val().trim(),
+      id: $("#reserve-unique-id").val().trim()
+    }
+
+    $.post("/api/reservations", userInput)
+        .then(function(data) {
+          console.log("booked.html", data);
+          alert("Adding reservation...");
+        });
+  })
+
 
   </script>
 </body>
