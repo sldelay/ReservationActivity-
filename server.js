@@ -21,17 +21,17 @@ const waitListed = [];
 
 // Basic route to the home page
 app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, "index.html"));
+    res.sendFile(path.join(__dirname, "views", "index.html"));
 });
 
 // Route to go to add reservation page
 app.get("/add", function(req,res) {
-    res.sendFile(path.join(__dirname, "reserve.html"));
+    res.sendFile(path.join(__dirname, "views" ,"reserve.html"));
 });
 
 // Route to go to booked reservations
 app.get("/booked", function(req, res) {
-    res.sendFile(path.join(__dirname, "booked.html"));
+    res.sendFile(path.join(__dirname, "views", "booked.html"));
 });
 
 
