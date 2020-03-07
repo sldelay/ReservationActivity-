@@ -58,12 +58,27 @@
     <footer class="footer mt-4">
       <div class="container">
         <p>Control Panel</p>
-        <p><a href="#" id="clear">Clear Table</a> | <a href="/api/tables">API Table Link</a> | <a href="/api/waitlist">API
+        <p><a href="#" id="clear">Clear Table</a> | <a href="/api/reservations">API Table Link</a> | <a href="/api/waitListed">API
             Wait List</a>
       </div>
     </footer>
 
   </div>
-
+<script>
+    $.get("/api/reservations", function(data) {
+        console.log(data);
+        if (data) {
+          $("#stats").show();
+          $("#name").text(data.name);
+          $("#role").text(data.role);
+          $("#age").text(data.age);
+          $("#force-points").text(data.forcePoints);
+        } else {
+          $("#name").text(
+            "The force is not strong with this one. Your character was not found.");
+          $("#stats").hide();
+        }
+      });
+</script>
 </body>
 </html>
