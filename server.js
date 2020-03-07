@@ -12,8 +12,8 @@ app.use(express.json());
 
 // Object containing reservations and waitlist entries
 const customers = {
-    reservations = [],
-    waitlisted = [],
+    reservations: [],
+    waitListed: [],
 }
 
 
@@ -35,6 +35,10 @@ app.get("/booked", function(req, res) {
     res.sendFile(path.join(__dirname, "views", "booked.html"));
 });
 
+app.get("/api/customers", function(req, res) {
+    return res.json(customers);
+  });
+
 // Create a new reservation
 app.post("/api/reservations", function(req, res) {
     let newReservation = req.body;
@@ -45,7 +49,7 @@ app.post("/api/reservations", function(req, res) {
         customers.waitListed.push(newReservation);
     };
     res.json(newReservation);
-    console.log(reservations)
+    console.log(customers.reservations)
 });
 
 // Starts the server to begin listening
