@@ -12,8 +12,8 @@ app.use(express.json());
 
 // Object containing reservations and waitlist entries
 const customers = {
-    reservations = [],
-    waitlisted = [],
+    reservations: [],
+    waitListed: [],
 }
 
 
