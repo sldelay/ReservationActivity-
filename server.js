@@ -11,10 +11,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Reserved tables data
-const reservations = [];
+const customers = {
+    reservations = [],
+    waitlisted = [],
+}
 
 // Waitlist data
-const waitListed = [];
+//const waitListed = [];
 
 // Routes
 //===========================================================================
@@ -39,9 +42,9 @@ app.post("/api/reservations", function(req, res) {
     let newReservation = req.body;
     console.log(newReservation);
     if (reservations.length < 5) {
-        reservations.push(newReservation);
+        customers.reservations.push(newReservation);
     } else {
-        waitListed.push(newReservation);
+        customers.waitListed.push(newReservation);
     };
     res.json(newReservation);
 });
